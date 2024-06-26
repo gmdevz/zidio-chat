@@ -3,7 +3,12 @@ import Routes from "./Routes";
 import { UserContextProvider } from "./UserContext";
 
 function App() {
-	axios.defaults.baseURL = "http://localhost:4040";
+	const isProduction = process.env.NODE_ENV === "production";
+
+	// Set the base URL based on the environment
+	axios.defaults.baseURL = isProduction
+		? "https://zidio-chat-three.vercel.app/" // Replace with your Vercel deployment URL
+		: "http://localhost:4040";
 	axios.defaults.withCredentials = true;
 
 	return (

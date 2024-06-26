@@ -20,7 +20,9 @@ export default function Chat() {
 	}, []);
 
 	function connectToWS() {
-		const ws = new WebSocket("ws://localhost:4040");
+		const wsProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+		const wsUrl = `${wsProtocol}//${window.location.host}/api/websocket`;
+		const ws = new WebSocket(wsUrl);
 		setWs(ws);
 		ws.addEventListener("message", handleMessage);
 		ws.addEventListener("close", () => {
