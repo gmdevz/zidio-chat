@@ -1,0 +1,5 @@
+# Client
+client/node_modules
+
+# Server
+api/node_modules
